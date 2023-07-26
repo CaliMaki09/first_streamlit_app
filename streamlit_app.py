@@ -28,7 +28,17 @@ import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"   +fruit_choice)
 
 import snowflake.connector
+import snowflake.connector
 
+# Replace these with your actual connection parameters
+conn = snowflake.connector.connect(
+    user= KeesyAnn0409,
+    password= QWERTY123s,
+    account= CaliMaki09,
+    warehouse= PC_RIVERY_WH,
+    database= PC_RIVERY_DB,
+    schema= PUBLIC
+)
 # take the json 
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # output
