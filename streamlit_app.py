@@ -29,15 +29,13 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"   +fruit_
 
 import snowflake.connector
 
-# Replace these with your actual connection parameters
-conn = snowflake.connector.connect(
-    user= KeesyAnn0409,
-    password= QWERTY123s,
-    account= CaliMaki09,
-    warehouse= PC_RIVERY_WH,
-    database= PC_RIVERY_DB,
-    schema= PUBLIC
-)
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+my_data_row = my_cur.fetchone()
+streamlit.text("Hello from Snowflake:")
+streamlit.text(my_data_row)
+
 # take the json 
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # output
