@@ -28,7 +28,6 @@ import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"   +fruit_choice)
 
 import snowflake.connector
-import snowflake.connector
 
 # Replace these with your actual connection parameters
 conn = snowflake.connector.connect(
